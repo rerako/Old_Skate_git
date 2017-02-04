@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\boomerang.cs" />
     <Compile Include="Assets\Scripts\boss_destroy.cs" />
     <Compile Include="Assets\Scripts\camScript.cs" />
+    <Compile Include="Assets\Scripts\newMovement.cs" />
     <Compile Include="Assets\Scripts\pulsing.cs" />
     <Compile Include="Assets\Scripts\shoot.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />

@@ -6,6 +6,7 @@ public class boss_destroy : MonoBehaviour
 {
     public GameObject[] weakpoints;
     public int HP_numb;
+    
     bool am_dead;
     // Use this for initialization
     void Start()
