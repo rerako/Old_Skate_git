@@ -10,6 +10,8 @@ public class enemy_Cannon : MonoBehaviour
     public bool lockon;
     public float timer;
     public float force;
+    public bool trace_bullet;
+    public float follow_speed;
     // Use this for initialization
     void Start()
     {
@@ -35,6 +37,10 @@ public class enemy_Cannon : MonoBehaviour
             if (player != null)
             {
                 bullet.GetComponent<boomerang>().setTarg(player.transform);
+                if (trace_bullet)
+                {
+                    bullet.GetComponent<boomerang>().setFollow(follow_speed);
+                }
             }
             bullet.GetComponent<Rigidbody>().AddForce(shootpoint.forward * force);
             timer = 2f;

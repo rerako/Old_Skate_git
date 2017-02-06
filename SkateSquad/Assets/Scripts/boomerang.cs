@@ -42,6 +42,13 @@ public class boomerang : MonoBehaviour {
         //cannon_origin = cannon;
 
     }
+    public void setFollow(float pow)
+    {
+
+        force = pow;
+        //cannon_origin = cannon;
+
+    }
     void OnCollisionEnter(Collision poke)
     {
         if (poke.gameObject.CompareTag("Player") && gameObject.CompareTag("enemy_bullet") == false)
