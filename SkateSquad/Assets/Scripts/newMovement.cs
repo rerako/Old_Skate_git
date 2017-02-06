@@ -12,7 +12,7 @@ public class newMovement : MonoBehaviour
     public float jump_pow = 5;
     public float fall_speed = 0;
     public float fall_speed_multiplier = 0;
-
+    public float B_pad_force;
     public Vector3 playerVelocity;
     public Vector3 forwardVector;
     RaycastHit hit;
@@ -71,7 +71,7 @@ public class newMovement : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
         }
         Debug.DrawRay(transform.position, dir * 2, Color.blue);
-        if (Physics.Raycast(transform.position, dir, 2f))
+        if (Physics.Raycast(transform.position, dir, 1f))
         {
             //the ray collided with something, you can interact
             // with the hit object now by using hit.collider.gameObject
@@ -94,38 +94,24 @@ public class newMovement : MonoBehaviour
     }
 
     void FixedUpdate()
-
     {
-
         playerVelocity = rb.velocity;
-
-
         forwardVector = new Vector3(0, 0, mForce);
-
-
         rb.AddRelativeForce(forwardVector, ForceMode.Force);
-        /*
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {
-            motion = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            velo = Vector3.Normalize(motion);
-            //motor = Mathf.Abs(motion.x) + Mathf.Abs(motion.z);
-            //T_motor = (1 / motor);
-            //velo = rb.velocity;
-        }
-        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && grounded)
-        {
-            rb.velocity = (speed * velo);
-            //rb.AddForce(velo * speed * T_motor * Input.GetAxis("Vertical"));
 
-        }
-
-        top_speed = rb.velocity.magnitude;
-        */
     }
+
     public void g_physic()
     {
         grounded = true;
+    }
+
+    void OnTriggerEnter(Collider boing)
+    {
+        if (boing.gameObject.CompareTag("Bounce"))
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + B_pad_force, rb.velocity.z);
+        }
     }
     public void air_physic()
     {

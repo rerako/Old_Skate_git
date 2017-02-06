@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class camScript : MonoBehaviour
 {
-    [Range(-2.5f, 2.5f)]
-    public float scroll;
+    [Range(-2.5f, 2.5f)] public float scroll;
     public Transform startPos;
     public Transform endPos;
     public Transform camPos;
@@ -47,7 +46,7 @@ public class camScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         cam = mainCamera;
         float mouseX = Input.GetAxis("Mouse X");

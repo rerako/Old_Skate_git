@@ -75,17 +75,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerHP.cs" />
+    <ProjectReference Include="SkateSquad.CSharp.Plugins.csproj">
+      <Project>{7898C8E9-3485-786D-12FB-152F7CC120A0}</Project>
+      <Name>SkateSquad.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\Collect.cs" />
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\Melee.cs" />
+    <Compile Include="Assets\Scripts\PlayerHP.cs" />
     <Compile Include="Assets\Scripts\boomerang.cs" />
     <Compile Include="Assets\Scripts\boss_destroy.cs" />
     <Compile Include="Assets\Scripts\camScript.cs" />
+    <Compile Include="Assets\Scripts\enemy_Cannon.cs" />
     <Compile Include="Assets\Scripts\newMovement.cs" />
     <Compile Include="Assets\Scripts\pulsing.cs" />
     <Compile Include="Assets\Scripts\shoot.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />
-    <Compile Include="Assets\enemy_Cannon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
