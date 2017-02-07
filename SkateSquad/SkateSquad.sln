@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateSquad.CSharp.Plugins", "SkateSquad.CSharp.Plugins.csproj", "{7898C8E9-3485-786D-12FB-152F7CC120A0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateSquad.CSharp", "SkateSquad.CSharp.csproj", "{7AEE1459-72FB-B207-8B3E-9D9837479439}"
 EndProject
 Global
@@ -11,10 +9,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7898C8E9-3485-786D-12FB-152F7CC120A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7898C8E9-3485-786D-12FB-152F7CC120A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7898C8E9-3485-786D-12FB-152F7CC120A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7898C8E9-3485-786D-12FB-152F7CC120A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AEE1459-72FB-B207-8B3E-9D9837479439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AEE1459-72FB-B207-8B3E-9D9837479439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AEE1459-72FB-B207-8B3E-9D9837479439}.Release|Any CPU.ActiveCfg = Release|Any CPU

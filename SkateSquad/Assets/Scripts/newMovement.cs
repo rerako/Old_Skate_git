@@ -15,13 +15,23 @@ public class newMovement : MonoBehaviour
     public float B_pad_force;
     public Vector3 playerVelocity;
     public Vector3 forwardVector;
+    public Transform Right;
     RaycastHit hit;
     Vector3 dir;
+    RaycastHit hitR;
+    Vector3 dirR;
+    RaycastHit hitL;
+    Vector3 dirL;
 
     public bool grounded;
+    public bool wall_running;
+    public float wall_jump;
+
+
+    public float top_speed;
+
     /*
     public float speed;
-    public float top_speed;
     public Vector3 velo;
     public Vector3 motion;
     public float motor;
@@ -35,6 +45,8 @@ public class newMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         dir = Vector3.down;
+
+
     }
     // Update is called once per frame
     void Update()
@@ -70,25 +82,7 @@ public class newMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
         }
-        Debug.DrawRay(transform.position, dir * 2, Color.blue);
-        if (Physics.Raycast(transform.position, dir, 1f))
-        {
-            //the ray collided with something, you can interact
-            // with the hit object now by using hit.collider.gameObject
-            grounded = true;
-            fall_speed = 0;
-        }
-        else
-        {
-            grounded = false;
-            fall_speed -= Time.deltaTime / fall_speed_multiplier;
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + fall_speed, rb.velocity.z);
-            //nothing was below your gameObject within 10m.
-        }
-        /*
-    */
-
-
+  
 
 
     }
@@ -98,6 +92,61 @@ public class newMovement : MonoBehaviour
         playerVelocity = rb.velocity;
         forwardVector = new Vector3(0, 0, mForce);
         rb.AddRelativeForce(forwardVector, ForceMode.Force);
+        Debug.DrawRay(transform.position, dir * 2, Color.blue);
+        if (Physics.Raycast(transform.position, dir, 1.5f))
+        {
+            //the ray collided with something, you can interact
+            // with the hit object now by using hit.collider.gameObject
+            grounded = true;
+            fall_speed = 0;
+        }
+        else
+        {
+            grounded = false;
+            if (wall_running == false) {
+                fall_speed -= Time.deltaTime / fall_speed_multiplier;
+
+            }
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + fall_speed, rb.velocity.z);
+            //nothing was below your gameObject within 10m.
+        }
+        /*
+    */
+        //Debug.DrawRay(transform.position, Vector3.Normalize(transform.TransformPoint(dirL * 1)), Color.blue);
+        Debug.DrawRay(transform.position, dirR * 2, Color.blue);
+        Debug.DrawRay(transform.position, dirL * 2, Color.blue);
+
+        top_speed = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
+        dirL = (Right.position - transform.position).normalized * -1;
+        dirR = (Right.position - transform.position).normalized;
+
+        if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirR, 1))
+        {
+            wall_running = true;
+
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            if (Input.GetKey("space"))
+            {
+                //rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
+                rb.AddForce(dirR * -wall_jump);
+                rb.AddForce(transform.up * wall_jump);
+
+            }
+        }
+        else if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirL,1))
+        {
+            wall_running = true;
+            rb.velocity = new Vector3(rb.velocity.x, 0.01f, rb.velocity.z);
+            if (Input.GetKey("space"))
+            {
+                //rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
+                rb.AddForce(dirL * -wall_jump);
+                rb.AddForce(transform.up * wall_jump);
+            }
+        }
+        else {
+            wall_running = false;
+        }
 
     }
 
