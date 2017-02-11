@@ -6,7 +6,7 @@ public class Auto_rails : MonoBehaviour {
     float ratio;
     public float scroll;
     [Range(0f, 5f)]public float scroll_multiplier;
-
+    public float push_force;
     public Transform startPos;
     public Transform scrollPos;
     public Transform endPos;
@@ -35,7 +35,7 @@ public class Auto_rails : MonoBehaviour {
         }
         else if(grinding && Vector3.SqrMagnitude(endPos.position - grinder.position) < 0.5f) {
 
-            grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * 50f);
+            grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * push_force);
         }
 
     }

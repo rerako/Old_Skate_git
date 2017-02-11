@@ -1,31 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public int hp;
+    int hp;
+    public int hp_max;
+    public Slider mainSlider;
     // Use this for initialization
     void Start()
     {
-        if (hp <= 0)
-        {
-            hp = 3;
-        }
+        hp = hp_max;
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp < 0)
+        if (hp <= 0)
         {
             gameObject.SetActive(false);
         }
+        mainSlider.value = divide(hp, hp_max);
     }
     public void hpminus()
     {
         hp = hp - 1;
+    }
+    public float divide(float x, float y)
+    {
+        return x / y;
     }
 }
 

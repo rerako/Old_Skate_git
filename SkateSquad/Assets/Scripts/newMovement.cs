@@ -13,9 +13,13 @@ public class newMovement : MonoBehaviour
     public float fall_speed = 0;
     public float fall_speed_multiplier = 0;
     public float B_pad_force;
+    public float horizontal_speed;
     public Vector3 playerVelocity;
     public Vector3 forwardVector;
     public Transform Right;
+    public bool left_wall;
+    public bool right_wall;
+
     RaycastHit hit;
     Vector3 dir;
     RaycastHit hitR;
@@ -78,7 +82,11 @@ public class newMovement : MonoBehaviour
                 mForce *= deceleration;
             }
         }
-        if (Input.GetKey("space") && grounded)
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            rb.AddForce(transform.right * Input.GetAxis("Horizontal") * horizontal_speed);
+        }
+        if (Input.GetKeyDown("space") && grounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
         }
@@ -92,60 +100,30 @@ public class newMovement : MonoBehaviour
         playerVelocity = rb.velocity;
         forwardVector = new Vector3(0, 0, mForce);
         rb.AddRelativeForce(forwardVector, ForceMode.Force);
-        Debug.DrawRay(transform.position, dir * 2, Color.blue);
-        if (Physics.Raycast(transform.position, dir, 1.5f))
-        {
-            //the ray collided with something, you can interact
-            // with the hit object now by using hit.collider.gameObject
-            grounded = true;
-            fall_speed = 0;
-        }
-        else
-        {
-            grounded = false;
-            if (wall_running == false) {
-                fall_speed -= Time.deltaTime / fall_speed_multiplier;
 
-            }
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + fall_speed, rb.velocity.z);
-            //nothing was below your gameObject within 10m.
-        }
-        /*
-    */
-        //Debug.DrawRay(transform.position, Vector3.Normalize(transform.TransformPoint(dirL * 1)), Color.blue);
-        Debug.DrawRay(transform.position, dirR * 2, Color.blue);
-        Debug.DrawRay(transform.position, dirL * 2, Color.blue);
+        ground_check();
 
         top_speed = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
         dirL = (Right.position - transform.position).normalized * -1;
         dirR = (Right.position - transform.position).normalized;
-
-        if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirR, 1))
+        if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirL, out hitL, 1.0f) && Physics.Raycast(transform.position, dirR, out hitR, 1.0f))
         {
-            wall_running = true;
 
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            if (Input.GetKey("space"))
-            {
-                //rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
-                rb.AddForce(dirR * -wall_jump);
-                rb.AddForce(transform.up * wall_jump);
-
-            }
         }
-        else if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirL,1))
+        else if (!grounded && top_speed > 1 &&  Physics.Raycast(transform.position, dirR, out hitR, 1.0f))
         {
-            wall_running = true;
-            rb.velocity = new Vector3(rb.velocity.x, 0.01f, rb.velocity.z);
-            if (Input.GetKey("space"))
-            {
-                //rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
-                rb.AddForce(dirL * -wall_jump);
-                rb.AddForce(transform.up * wall_jump);
-            }
+            walljumpR();
+
+        }
+        else if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirL, out hitL, 1.0f))
+        {
+            walljumpL();
+
         }
         else {
             wall_running = false;
+            left_wall = false;
+            right_wall = false;
         }
 
     }
@@ -154,7 +132,31 @@ public class newMovement : MonoBehaviour
     {
         grounded = true;
     }
+    public void ground_check()
+    {
+        
+        if (grounded == false && Physics.Raycast(transform.position, dir, out hit, 1.5f))
+        {
 
+            if (hit.transform.gameObject.CompareTag("Terrain") || hit.transform.gameObject.CompareTag("Rail"))
+            {            //the ray collided with something, you can interact
+                         // with the hit object now by using hit.collider.gameObject
+                grounded = true;
+                fall_speed = 0;
+            }
+
+        }
+        else
+        {
+            grounded = false;
+            if (wall_running == false)
+            {
+                fall_speed -= Time.deltaTime / fall_speed_multiplier;
+
+            }
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + fall_speed, rb.velocity.z);
+        }
+    }
     void OnTriggerEnter(Collider boing)
     {
         if (boing.gameObject.CompareTag("Bounce"))
@@ -165,5 +167,38 @@ public class newMovement : MonoBehaviour
     public void air_physic()
     {
        grounded = false;
+    }
+    public void walljumpR()
+    {
+        if (hitR.transform.CompareTag("Terrain"))
+        {
+            wall_running = true;
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            if (Input.GetKey("space"))
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
+                rb.AddForce(dirR * -wall_jump);
+                //rb.AddForce(transform.up * wall_jump * 2);
+                fall_speed = -0.25f;
+                right_wall = true;
+            }
+
+        }
+    }
+    public void walljumpL()
+    {
+        if (hitL.transform.CompareTag("Terrain"))
+        {
+            wall_running = true;
+            rb.velocity = new Vector3(rb.velocity.x, 0.01f, rb.velocity.z);
+            if (Input.GetKey("space"))
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
+                rb.AddForce(dirL * -wall_jump);
+                //rb.AddForce(transform.up * wall_jump * 2);
+                fall_speed = -0.25f;
+                left_wall = true;
+            }
+        }
     }
 }
