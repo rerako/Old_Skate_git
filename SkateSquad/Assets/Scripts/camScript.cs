@@ -114,7 +114,7 @@ public class camScript : MonoBehaviour
             FirstPSCam.SetActive(true);
             ThirdPSCam.SetActive(false);
             mainCamera = FirstPSCam;
-            rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle / 5);
+            rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
 
 
         }

@@ -10,7 +10,7 @@ public class newMovement : MonoBehaviour
     public float deceleration = 0.5f;
     public float maxSpeed = 50;
     public float jump_pow = 5;
-    public float fall_speed = 0;
+    private float fall_speed = 0;
     public float fall_speed_multiplier = 0;
     public float B_pad_force;
     public float horizontal_speed;
@@ -90,7 +90,7 @@ public class newMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jump_pow, rb.velocity.z);
         }
-  
+
 
 
     }
@@ -110,7 +110,7 @@ public class newMovement : MonoBehaviour
         {
 
         }
-        else if (!grounded && top_speed > 1 &&  Physics.Raycast(transform.position, dirR, out hitR, 1.0f))
+        else if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirR, out hitR, 1.0f))
         {
             walljumpR();
 
@@ -120,7 +120,8 @@ public class newMovement : MonoBehaviour
             walljumpL();
 
         }
-        else {
+        else
+        {
             wall_running = false;
             left_wall = false;
             right_wall = false;
@@ -134,8 +135,8 @@ public class newMovement : MonoBehaviour
     }
     public void ground_check()
     {
-        
-        if (grounded == false && Physics.Raycast(transform.position, dir, out hit, 1.5f))
+
+        if (Physics.Raycast(transform.position, dir, out hit, 1.5f))
         {
 
             if (hit.transform.gameObject.CompareTag("Terrain") || hit.transform.gameObject.CompareTag("Rail"))
@@ -146,16 +147,20 @@ public class newMovement : MonoBehaviour
             }
 
         }
-        else
+        else if (!Physics.Raycast(transform.position, dir, out hit, 1.5f))
         {
+
             grounded = false;
             if (wall_running == false)
             {
-                fall_speed -= Time.deltaTime / fall_speed_multiplier;
+                fall_speed -= Time.deltaTime * fall_speed_multiplier;
 
             }
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + fall_speed, rb.velocity.z);
+
+
         }
+
     }
     void OnTriggerEnter(Collider boing)
     {
@@ -166,7 +171,7 @@ public class newMovement : MonoBehaviour
     }
     public void air_physic()
     {
-       grounded = false;
+        grounded = false;
     }
     public void walljumpR()
     {
