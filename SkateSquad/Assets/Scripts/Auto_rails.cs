@@ -22,11 +22,14 @@ public class Auto_rails : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Space))
+        if ( grinding && Input.GetKey(KeyCode.Space))
         {
             grinding = false;
-            grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * push_force);
+            if (grinder.GetComponent<Rigidbody>() != null)
+            {
+                grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * push_force);
 
+            }
             grinder = null;
         }
         if (grinding && scroll < 1)
