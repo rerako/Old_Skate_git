@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\shoot.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />
     <Compile Include="Assets\rotate_script.cs" />
+    <Compile Include="Assets\time_mani.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

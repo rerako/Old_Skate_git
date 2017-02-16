@@ -11,7 +11,8 @@ public class Auto_rails : MonoBehaviour {
     public Transform scrollPos;
     public Transform endPos;
     public Transform grinder;
-    float total_dist;
+    public float total_dist;
+    public float timer;
     public bool grinding;
     // Use this for initialization
     void Start () {
@@ -24,18 +25,26 @@ public class Auto_rails : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
             grinding = false;
+            grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * push_force);
+
             grinder = null;
         }
-        if (grinding && Vector3.SqrMagnitude(endPos.position - grinder.position) > 0.5f)
+        if (grinding && scroll < 1)
         {
+            timer += Time.deltaTime;
             scroll = Mathf.Clamp(scroll, 0, 1f);
-            scroll += Time.deltaTime * scroll_multiplier;
+            scroll += ((Time.deltaTime / total_dist) * scroll_multiplier) ;
             scrollPos.position = startPos.position + ((endPos.position - startPos.position) * scroll);
             grinder.position = scrollPos.position;
         }
-        else if(grinding && Vector3.SqrMagnitude(endPos.position - grinder.position) < 0.5f) {
+        else if(grinding && scroll >= 1) {
+            if (grinder.GetComponent<Rigidbody>() != null)
+            {
+                grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * push_force);
 
-            grinder.GetComponent<Rigidbody>().AddForce((endPos.position - startPos.position).normalized * push_force);
+            }
+            grinding = false;
+            grinder = null;
         }
 
     }
