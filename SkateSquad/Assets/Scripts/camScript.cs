@@ -172,4 +172,8 @@ public class camScript : MonoBehaviour
     {
         return rotY;
     }
+    public void setMouseSensi(float mouse_level)
+    {
+        mouseSensitivity = mouse_level;
+    }
 }

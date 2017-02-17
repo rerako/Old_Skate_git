@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class system_options : MonoBehaviour {
     public int load_scene_numb;
+    public camScript player_controls;
+    public float mouse_sense;
 	// Use this for initialization
 	void Start () {
         UnityEngine.Cursor.visible = false;
-
+        player_controls.setMouseSensi(mouse_sense);
     }
 
     // Update is called once per frame
