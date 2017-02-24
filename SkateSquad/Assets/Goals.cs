@@ -44,10 +44,10 @@ public class Goals : MonoBehaviour {
 
     void OnTriggerEnter(Collider end)
     {
-        if (end.gameObject.CompareTag("Goal"))
+        if (end.gameObject.CompareTag("Player"))
         {
             timer = false;
-            
+            end_goal = true;
         }
         
     }
