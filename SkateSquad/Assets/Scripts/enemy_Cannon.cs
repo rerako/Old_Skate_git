@@ -36,13 +36,15 @@ public class enemy_Cannon : MonoBehaviour
             GameObject bullet = Instantiate(e_bullet, shootpoint.position, shootpoint.rotation) as GameObject;
             if (player != null)
             {
-                bullet.GetComponent<boomerang>().setTarg(player.transform);
+
                 if (trace_bullet)
                 {
+                    bullet.GetComponent<boomerang>().setTarg(player.transform);
+                    bullet.GetComponent<Rigidbody>().AddForce(shootpoint.forward * force);
+
                     bullet.GetComponent<boomerang>().setFollow(follow_speed);
                 }
             }
-            bullet.GetComponent<Rigidbody>().AddForce(shootpoint.forward * force);
             timer = 2f;
 
         }
