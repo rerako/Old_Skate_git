@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class newMovement : MonoBehaviour
 {
@@ -106,6 +107,26 @@ public class newMovement : MonoBehaviour
         top_speed = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
         dirL = (Right.position - transform.position).normalized * -1;
         dirR = (Right.position - transform.position).normalized;
+        if (left_wall)
+        {
+            if (Input.GetKey("space"))
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
+                rb.AddForce(dirL * -wall_jump, ForceMode.Impulse);
+                //rb.AddForce(transform.up * wall_jump * 2);
+                fall_speed = -0.25f;
+            }
+        }
+        else if (right_wall)
+        {
+            if (Input.GetKey("space"))
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
+                rb.AddForce(dirR * -wall_jump, ForceMode.Impulse);
+                //rb.AddForce(transform.up * wall_jump * 2);
+                fall_speed = -0.25f;
+            }
+        }
         if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirL, out hitL, 1.0f) && Physics.Raycast(transform.position, dirR, out hitR, 1.0f))
         {
 
@@ -168,6 +189,11 @@ public class newMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + B_pad_force, rb.velocity.z);
         }
+        if (boing.gameObject.CompareTag("Restart"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+
+        }
     }
     public void air_physic()
     {
@@ -179,14 +205,8 @@ public class newMovement : MonoBehaviour
         {
             wall_running = true;
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            if (Input.GetKey("space"))
-            {
-                rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
-                rb.AddForce(dirR * -wall_jump);
-                //rb.AddForce(transform.up * wall_jump * 2);
-                fall_speed = -0.25f;
-                right_wall = true;
-            }
+            right_wall = true;
+
 
         }
     }
@@ -202,8 +222,9 @@ public class newMovement : MonoBehaviour
                 rb.AddForce(dirL * -wall_jump);
                 //rb.AddForce(transform.up * wall_jump * 2);
                 fall_speed = -0.25f;
-                left_wall = true;
             }
+            left_wall = true;
+
         }
     }
 }

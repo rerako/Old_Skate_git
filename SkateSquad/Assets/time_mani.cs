@@ -5,7 +5,7 @@ using UnityEngine;
 public class time_mani : MonoBehaviour
 {
     [Range(0f, 1f)]public float time_scale;
-
+    //public system_options note;
     // Use this for initialization
     void Start()
     {
@@ -18,11 +18,12 @@ public class time_mani : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = time_scale;
-            Debug.Log("working");
+            //Debug.Log("working");
         }
         else
         {
-            Time.timeScale = 1;
+
+//            Time.timeScale = 1;
         }
     }
 }

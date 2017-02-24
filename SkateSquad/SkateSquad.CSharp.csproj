@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Goals.cs" />
     <Compile Include="Assets\Scripts\Auto_rails.cs" />
     <Compile Include="Assets\Scripts\Collect.cs" />
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\pulsing.cs" />
     <Compile Include="Assets\Scripts\shoot.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />
+    <Compile Include="Assets\bossHealth.cs" />
     <Compile Include="Assets\rotate_script.cs" />
     <Compile Include="Assets\system_options.cs" />
     <Compile Include="Assets\time_mani.cs" />

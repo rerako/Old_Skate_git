@@ -9,7 +9,7 @@ public class camScript : MonoBehaviour
     public Transform endPos;
     public Transform camPos;
     public GameObject mainCamera;
-
+    public bool playing;
     public GameObject FirstPSCam;
     public GameObject ThirdPSCam;
     public GameObject TPStoggleCam;
@@ -30,6 +30,10 @@ public class camScript : MonoBehaviour
     public float stocky;
     public Quaternion localRotation2;
     public Quaternion localRotation;
+
+    RaycastHit hit;
+    Vector3 dir;
+
     // Use this for initialization
 
     void Start()
@@ -48,6 +52,10 @@ public class camScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (playing)
+        {
+
+        }
         cam = mainCamera;
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = -Input.GetAxis("Mouse Y");
@@ -57,9 +65,18 @@ public class camScript : MonoBehaviour
         scroll = Mathf.Clamp(scroll, -2.5f, 2.5f);
         scroll -= Input.GetAxis("Mouse ScrollWheel");
         CamToggle();
+        dir = (transform.position - mainCamera.transform.position).normalized;
+        if (Physics.Raycast(transform.position, dir, out hit, 1.0f))
+        {
 
-        //camPos.eulerAngles = new Vector3(scroll * 2.5f, camPos.eulerAngles.y, 0);
-        camPos.position = startPos.position + ((endPos.position - startPos.position) * (scroll / 2.5f));
+
+        }
+        else
+        {
+            //camPos.eulerAngles = new Vector3(scroll * 2.5f, camPos.eulerAngles.y, 0);
+            camPos.position = startPos.position + ((endPos.position - startPos.position) * (scroll / 2.5f));
+        }
+
 
         freeCam();
 
@@ -175,5 +192,6 @@ public class camScript : MonoBehaviour
     public void setMouseSensi(float mouse_level)
     {
         mouseSensitivity = mouse_level;
+
     }
 }
