@@ -75,24 +75,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Goals.cs" />
     <Compile Include="Assets\Scripts\Auto_rails.cs" />
     <Compile Include="Assets\Scripts\Collect.cs" />
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\Goals.cs" />
     <Compile Include="Assets\Scripts\Melee.cs" />
     <Compile Include="Assets\Scripts\PlayerHP.cs" />
     <Compile Include="Assets\Scripts\boomerang.cs" />
+    <Compile Include="Assets\Scripts\bossHealth.cs" />
     <Compile Include="Assets\Scripts\boss_destroy.cs" />
     <Compile Include="Assets\Scripts\camScript.cs" />
     <Compile Include="Assets\Scripts\enemy_Cannon.cs" />
     <Compile Include="Assets\Scripts\newMovement.cs" />
     <Compile Include="Assets\Scripts\pulsing.cs" />
+    <Compile Include="Assets\Scripts\rotate_script.cs" />
     <Compile Include="Assets\Scripts\shoot.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />
-    <Compile Include="Assets\bossHealth.cs" />
-    <Compile Include="Assets\rotate_script.cs" />
-    <Compile Include="Assets\system_options.cs" />
-    <Compile Include="Assets\time_mani.cs" />
+    <Compile Include="Assets\Scripts\system_options.cs" />
+    <Compile Include="Assets\Scripts\time_mani.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

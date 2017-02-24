@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class boss_destroy : MonoBehaviour
 {
-    public GameObject[] weakpoints;
-    public int HP_numb;
+    public List<GameObject> weak_spots;
+    private int HP_numb;
     public int max_hp;
-
+    public float dmg;
     bool am_dead;
     // Use this for initialization
     void Start()
     {
+        HP_numb = weak_spots.Count;
         am_dead = false;
         if(max_hp == 0)
         {
@@ -32,7 +33,7 @@ public class boss_destroy : MonoBehaviour
         int dmg_total = 0;
         for (int x = 0; x < HP_numb; x++)
         {
-            if (weakpoints[x] != null)
+            if (weak_spots[x] != null)
             {
             }
             else
@@ -40,9 +41,10 @@ public class boss_destroy : MonoBehaviour
                 dmg_total++;
             }
         }
-        if(max_hp < dmg_total)
+        dmg = dmg_total;
+        if(max_hp <= dmg_total)
         {
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
 
         }
@@ -53,7 +55,7 @@ public class boss_destroy : MonoBehaviour
     }
     public bool check_dead()
     {
-        if (max_hp <= 0)
+        if (max_hp - dmg <= 0)
         {
             return true;
         }
@@ -68,7 +70,7 @@ public class boss_destroy : MonoBehaviour
         int dmg_total = 0;
         for (int x = 0; x < HP_numb; x++)
         {
-            if (weakpoints[x] != null)
+            if (weak_spots[x] != null)
             {
             }
             else

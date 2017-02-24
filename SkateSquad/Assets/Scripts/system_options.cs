@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class system_options : MonoBehaviour
 {
-    public int load_scene_numb;
     public GameObject menu;
     public float time_scale_temp;
     public float diff = 150;
@@ -58,14 +57,19 @@ public class system_options : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            SceneManager.LoadScene(load_scene_numb, LoadSceneMode.Single);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
+
 
         }
 
     }
     public void restart()
     {
-        SceneManager.LoadScene(load_scene_numb, LoadSceneMode.Single);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 
     }
 }
