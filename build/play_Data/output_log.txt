@@ -7,20 +7,42 @@ Direct3D:
     VRAM:     2036 MB
     Driver:   20.19.15.4416
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Boe\Documents\Skate\play_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Users\Boe\Documents\Skate\play_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.027 seconds
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Boe\Documents\Skate\play_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Boe\Documents\Skate\build\play_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Boe\Documents\Skate\build\play_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.029 seconds
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Boe\Documents\Skate\build\play_Data\Managed\System.dll (this message is harmless)
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.211971 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2104 -> priority: 1 
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.137265 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1004.
+Total: 0.649179 ms (FindLiveObjects: 0.079971 ms CreateObjectMapping: 0.037633 ms MarkObjects: 0.520027 ms  DeleteObjects: 0.008553 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.010546 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1080.
+Total: 0.561937 ms (FindLiveObjects: 0.088096 ms CreateObjectMapping: 0.039344 ms MarkObjects: 0.417818 ms  DeleteObjects: 0.016250 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.845472 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1080.
+Total: 0.583747 ms (FindLiveObjects: 0.090662 ms CreateObjectMapping: 0.038061 ms MarkObjects: 0.447753 ms  DeleteObjects: 0.006842 ms)
+

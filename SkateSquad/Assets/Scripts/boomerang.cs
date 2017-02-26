@@ -24,9 +24,20 @@ public class boomerang : MonoBehaviour {
         }
 
         Timer -= Time.deltaTime;
+
         if(one_Use && Timer < 0)
         {
             DestroyObject(gameObject);
+        }
+        else if (!one_Use && Timer < 0)
+        {
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            gameObject.GetComponent<Rigidbody>().drag = 2f;
+            if (Vector3.SqrMagnitude(transform.position - player.transform.position) < 1)
+            {
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+            }
         }
 	}
     public void setTarg(Transform pos, shoot cannon) {
@@ -65,6 +76,7 @@ public class boomerang : MonoBehaviour {
             DestroyObject(poke.gameObject);
 
         }
+
     }
     void OnTriggerEnter(Collider poke)
     {
@@ -72,6 +84,12 @@ public class boomerang : MonoBehaviour {
         {
             poke.gameObject.GetComponent<PlayerHP>().hpminus();
             Destroy(gameObject);
+        }
+        if (poke.gameObject.CompareTag("Collect"))
+        {
+            poke.transform.SetParent(transform);
+            poke.gameObject.GetComponent<SphereCollider>().radius = poke.gameObject.GetComponent<SphereCollider>().radius * 2;
+            poke.transform.position = transform.position;
         }
     }
 }

@@ -62,6 +62,7 @@ public class enemy_Cannon : MonoBehaviour
             player = poke.gameObject;
         }
 
+
     }
     void OnTriggerExit(Collider poke)
     {

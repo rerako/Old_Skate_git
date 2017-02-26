@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class shoot : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class shoot : MonoBehaviour
     Vector3 localRotation;
     public Transform shootpoint;
     public int ammo;
-
+    public Text ammo_counter;
     // Use this for initialization
     void Start()
     {
@@ -25,6 +26,17 @@ public class shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ammo_counter.text = "Ammo: " + ammo;
+        if(ammo > 0)
+        {
+            ammo_counter.color = Color.yellow;
+
+        }
+        else
+        {
+            ammo_counter.color = Color.red;
+
+        }
         Xaxis = angle.giveAxisX();
         Yaxis = angle.giveAxisY();
         transform.rotation = Quaternion.Euler(Xaxis, Yaxis, 0.0f);
@@ -33,8 +45,17 @@ public class shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && ammo > 0)
         {
             GameObject bullet = Instantiate(original, shootpoint.position, shootpoint.rotation) as GameObject;
-            bullet.GetComponent<boomerang>().setTarg(transform.parent, gameObject.GetComponent<shoot>());
-            bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
+            if(bullet.GetComponent<boomerang>() == true)
+            {
+                bullet.GetComponent<boomerang>().setTarg(transform.parent, gameObject.GetComponent<shoot>());
+
+            }
+            if (bullet.GetComponent<Rigidbody>() == true)
+            {
+                bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
+
+            }
+
             ammo--;
         }
 

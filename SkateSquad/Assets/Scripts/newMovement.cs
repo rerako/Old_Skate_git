@@ -32,6 +32,9 @@ public class newMovement : MonoBehaviour
     public bool wall_running;
     public float wall_jump;
 
+    public GameObject right_feed;
+    public GameObject left_feed;
+
 
     public float top_speed;
 
@@ -109,6 +112,8 @@ public class newMovement : MonoBehaviour
         dirR = (Right.position - transform.position).normalized;
         if (left_wall)
         {
+            left_feed.SetActive(true);
+
             if (Input.GetKey("space"))
             {
                 rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
@@ -116,9 +121,12 @@ public class newMovement : MonoBehaviour
                 //rb.AddForce(transform.up * wall_jump * 2);
                 fall_speed = -0.25f;
             }
+            
         }
         else if (right_wall)
         {
+            right_feed.SetActive(true);
+
             if (Input.GetKey("space"))
             {
                 rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
@@ -126,6 +134,8 @@ public class newMovement : MonoBehaviour
                 //rb.AddForce(transform.up * wall_jump * 2);
                 fall_speed = -0.25f;
             }
+
+
         }
         if (!grounded && top_speed > 1 && Physics.Raycast(transform.position, dirL, out hitL, 1.0f) && Physics.Raycast(transform.position, dirR, out hitR, 1.0f))
         {
@@ -146,6 +156,10 @@ public class newMovement : MonoBehaviour
             wall_running = false;
             left_wall = false;
             right_wall = false;
+            right_feed.gameObject.SetActive(false);
+            left_feed.gameObject.SetActive(false);
+
+
         }
 
     }
@@ -216,13 +230,6 @@ public class newMovement : MonoBehaviour
         {
             wall_running = true;
             rb.velocity = new Vector3(rb.velocity.x, 0.01f, rb.velocity.z);
-            if (Input.GetKey("space"))
-            {
-                rb.velocity = new Vector3(rb.velocity.x, 15, rb.velocity.z);
-                rb.AddForce(dirL * -wall_jump);
-                //rb.AddForce(transform.up * wall_jump * 2);
-                fall_speed = -0.25f;
-            }
             left_wall = true;
 
         }
