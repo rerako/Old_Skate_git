@@ -7,22 +7,22 @@ public class rail_connect : MonoBehaviour
     public List<Transform> blocks;
     public List<GameObject> rails;
     public GameObject ghost_posts;
-    public Transform point_a;
-    public Transform point_b;
-    public int direction;
+    private Transform point_a;
+    private Transform point_b;
+    private int direction;
     public bool donut;
-    public bool grinds;
-    public Transform grinder;
+    private bool grinds;
+    private Transform grinder;
     public GameObject posts;
     public Transform scroll_point;
 
-    public int chain_id1;
-    public int chain_id2;
-    public int chain_point;
+    private int chain_id1;
+    private int chain_id2;
+    private int chain_point;
 
     private float total_dist;
     private float timer;
-    public float scroll = 0;
+    private float scroll = 0;
 
     [Range(0f, 10f)]
     public float push_force = 1;
