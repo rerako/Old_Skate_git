@@ -14,12 +14,17 @@ public class bossHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        hp = divide(boss.check_life(), boss.get_hp());
-        hpSlide.value = hp;
-        if (boss.check_life() <= 0)
-        {
-            gameObject.SetActive(false);
+
+        if (boss != null) {
+            hp = divide(boss.check_life(), boss.get_hp());
+            hpSlide.value = hp;
+            if (boss.check_life() <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+
         }
+
 	}
     public float divide(float a, float b)
     {

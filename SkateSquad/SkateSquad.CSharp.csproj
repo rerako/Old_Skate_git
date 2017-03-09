@@ -81,14 +81,17 @@
     <Compile Include="Assets\Scripts\Goals.cs" />
     <Compile Include="Assets\Scripts\Melee.cs" />
     <Compile Include="Assets\Scripts\PlayerHP.cs" />
+    <Compile Include="Assets\Scripts\addTo.cs" />
     <Compile Include="Assets\Scripts\boomerang.cs" />
     <Compile Include="Assets\Scripts\bossHealth.cs" />
     <Compile Include="Assets\Scripts\boss_destroy.cs" />
     <Compile Include="Assets\Scripts\camScript.cs" />
     <Compile Include="Assets\Scripts\enemy_Cannon.cs" />
+    <Compile Include="Assets\Scripts\enemy_hp.cs" />
     <Compile Include="Assets\Scripts\newMovement.cs" />
     <Compile Include="Assets\Scripts\one_way.cs" />
     <Compile Include="Assets\Scripts\pulsing.cs" />
+    <Compile Include="Assets\Scripts\rail_connect.cs" />
     <Compile Include="Assets\Scripts\rotate_script.cs" />
     <Compile Include="Assets\Scripts\shoot.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />

@@ -23,7 +23,7 @@ public class time_mani : MonoBehaviour
         else
         {
 
-//            Time.timeScale = 1;
+         Time.timeScale = 1;
         }
     }
 }

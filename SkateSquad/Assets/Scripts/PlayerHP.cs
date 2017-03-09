@@ -23,7 +23,11 @@ public class PlayerHP : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        mainSlider.value = divide(hp, hp_max);
+        if (mainSlider)
+        {
+            mainSlider.value = divide(hp, hp_max);
+
+        }
 
     }
     public void hpminus()

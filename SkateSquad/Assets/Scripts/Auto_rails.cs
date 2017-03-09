@@ -30,7 +30,6 @@ public class Auto_rails : MonoBehaviour
 
 
     public bool grinding;
-    bool direction;
     public bool bounce;
 
 
@@ -44,10 +43,7 @@ public class Auto_rails : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (direction)
-        {
 
-        }
         if (grinding && Input.GetKeyDown(KeyCode.Space))
         {
             grinding = false;
@@ -88,7 +84,7 @@ public class Auto_rails : MonoBehaviour
         }
 
     }
-    void OnTriggerEnter(Collider grind)
+    public void OnTriggerEnter(Collider grind)
     {
         if (grind.gameObject.CompareTag("Player") && grinding == false)
         {

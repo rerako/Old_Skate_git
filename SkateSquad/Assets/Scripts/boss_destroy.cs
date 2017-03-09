@@ -8,12 +8,12 @@ public class boss_destroy : MonoBehaviour
     private int HP_numb;
     public int max_hp;
     public float dmg;
-    bool am_dead;
+    //bool am_dead;
     // Use this for initialization
     void Start()
     {
         HP_numb = weak_spots.Count;
-        am_dead = false;
+        //am_dead = false;
         if(max_hp == 0)
         {
             max_hp = 3;

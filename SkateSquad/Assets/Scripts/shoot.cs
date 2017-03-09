@@ -26,17 +26,21 @@ public class shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammo_counter.text = "Ammo: " + ammo;
-        if(ammo > 0)
+        if(ammo_counter != null)
         {
-            ammo_counter.color = Color.yellow;
+            ammo_counter.text = "Ammo: " + ammo;
+            if (ammo > 0)
+            {
+                ammo_counter.color = Color.yellow;
 
-        }
-        else
-        {
-            ammo_counter.color = Color.red;
+            }
+            else
+            {
+                ammo_counter.color = Color.red;
 
+            }
         }
+
         Xaxis = angle.giveAxisX();
         Yaxis = angle.giveAxisY();
         transform.rotation = Quaternion.Euler(Xaxis, Yaxis, 0.0f);
