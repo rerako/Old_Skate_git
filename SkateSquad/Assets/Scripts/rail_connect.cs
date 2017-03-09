@@ -18,7 +18,7 @@ public class rail_connect : MonoBehaviour
 
     private int chain_id1;
     private int chain_id2;
-    private int chain_point;
+    public int chain_point;
 
     private float total_dist;
     private float timer;
@@ -170,7 +170,7 @@ public class rail_connect : MonoBehaviour
             point_b = blocks[x2];
             scroll = scroll_perc;
 
-            if (x1 == 2)
+            if (x1 == blocks.Count-1)
             {
                 chain_point = -1;
 
@@ -189,7 +189,7 @@ public class rail_connect : MonoBehaviour
 
             if (x2 == 0)
             {
-                chain_point = 3;
+                chain_point = blocks.Count;
             }else
             {
                 chain_point = x2;
